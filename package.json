@@ -23,7 +23,7 @@
     "mongose": "0.0.2-security"
   },
   "engines": {
-    "node": ">=10.15.1"
+    "node": "10.15.1"
     
   },
   "devDependencies": {
