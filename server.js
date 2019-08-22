@@ -10,7 +10,7 @@ connectDB();
 // init middleware
 app.use(express.json({ extended: false }));
 
-app.get("/", (req, res) => res.json({ msg: "Welcome to Driver log App" }));
+//app.get("/", (req, res) => res.json({ msg: "Welcome to Driver log App" }));
 
 // Define Routes
 app.use("/api/users", require("./routes/users"));
