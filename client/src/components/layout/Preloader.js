@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { Fragment } from 'react';
+import preloader from './preloader.gif'
 
 const Preloader = () => {
   return (
-    <div>
-      <img src='../../preloader.gif'></img>
-    </div>
+    <Fragment>
+      <img src={preloader} 
+            alt='Loading...'
+            style={{width: '200px', margin: 'auto', display: 'block'}}
+            />
+    </Fragment>
   )
 }
 

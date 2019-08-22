@@ -2,3 +2,5 @@
 
 delete on call form not removing from ui 
   callitem.js file  
+
+Registratiion :  error when trying to register a user and email exists

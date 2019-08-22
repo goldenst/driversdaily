@@ -6,13 +6,14 @@ const { check, validationResult } = require("express-validator");
 const User = require("../models/User");
 const Call = require("../models/Call");
 
-// @route   GET  api/calls
+// @route   GET  api/daily
 // @Desc    Get all users calls
 // @Access  Private
 // Status
-router.get("/", auth, async (req, res) => {
+router.get("/",  async (req, res) => {
   try {
-    const calls = await Call.find({ user: req.user.id }).sort({ date: -1 });
+    console.log('in cal for calls')
+    const calls = await Call.find().sort({ date: -1});
     res.json(calls);
   } catch (err) {
     console.error(err.message);

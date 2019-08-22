@@ -5,16 +5,26 @@ import {
   CLEAR_CURRENT,
   UPDATE_CALL,
   FILTER_CALL,
-  CLEAR_FILTER
+  CLEAR_FILTER,
+  CALL_ERROR,
+  GET_CALLS,
+  CLEAR_CALLS
 } from "../types";
 
 export default (state, action) => {
   switch (action.type) {
+    case GET_CALLS:
+      return {
+        ...state,
+        calls: action.payload,
+        loading: false
+      };
     case ADD_CALL:
       console.log("in reducer", action.payload);
       return {
         ...state,
-        calls: [...state.calls, action.payload]
+        calls: [action.payload, ...state.calls ],
+        loading: false
       };
 
     case SET_CURRENT:
@@ -31,14 +41,24 @@ export default (state, action) => {
       return {
         ...state,
         calls: state.calls.map(call =>
-          call.id === action.payload.id ? action.payload : call
-        )
+          call._id === action.payload._id ? action.payload : call
+        ),
+        loading: false
       };
     case DELETE_CALL:
       console.log("in reducer", action.payload);
       return {
         ...state,
-        calls: state.calls.filter(call => call.id !== action.payload)
+        calls: state.calls.filter(call => call._id !== action.payload),
+        loading: false
+      };
+    case CLEAR_CALLS:
+      return {
+        ...state,
+        calls: null,
+        filtered: null,
+        error: null,
+        current: null
       };
     case FILTER_CALL:
       return {
@@ -50,11 +70,16 @@ export default (state, action) => {
           );
         })
       };
-      case CLEAR_FILTER:
-          return {
-            ...state,
-            filtered: null
-          };
+    case CLEAR_FILTER:
+      return {
+        ...state,
+        filtered: null
+      };
+    case CALL_ERROR:
+      return {
+        ...state,
+        error: action.payload
+      };
     default:
       return state;
   }

@@ -15,6 +15,7 @@ app.get("/", (req, res) => res.json({ msg: "Welcome to Driver log App" }));
 app.use("/api/users", require("./routes/users"));
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/calls", require("./routes/calls"));
+app.use("/api/daily", require("./routes/daily"));
 
 const PORT = process.env.PORT || 5000;
 

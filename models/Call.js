@@ -1,14 +1,20 @@
-const mongoose = require ('mongoose');
+const mongoose = require("mongoose");
 
 const CallSchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'user'
+    ref: "user"
   },
-  customer_name: {
+  req_by: {
     type: String
   },
-  cust_phone: {
+  member_name: {
+    type: String
+  },
+  aaa_membership: {
+    type: String
+  },
+  member_phone: {
     type: String
   },
   location: {
@@ -17,23 +23,40 @@ const CallSchema = mongoose.Schema({
   dest: {
     type: String
   },
-  mtv : {
-    type: Number
-  },
-  towMiles: {
-    type: Number
-  },
-  aaa_callnum: {
+  aaa_call_num: {
     type: String
   },
-  cash_tag: {
+  enroute: {
     type: String
   },
-  
+  on_location: {
+    type: String
+  },
+  in_tow: {
+    type: String
+  },
+  clear: {
+    type: String
+  },
+  mtv: {
+    type: String
+  },
+  tow_miles: {
+    type: String
+  },
+  t_code: {
+    type: String
+  },
+  membership_level: {
+    type: String
+  },
+  amount_collected: {
+    type: String
+  },
   date: {
     type: Date,
     default: Date.now
-  },
-})
+  }
+});
 
-module.exports = mongoose.model('call', CallSchema)
+module.exports = mongoose.model("call", CallSchema);
