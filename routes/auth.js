@@ -12,13 +12,13 @@ const User = require("../models/User");
 // @Desc    Get Loged in user
 // @Access  Private
 // Status   done 
-router.get("/",  async (req, res) => {
+router.get("/", auth, async (req, res) => {
  try {
    const user = await User.findById(req.user.id).select('-password')
    res.json(user)
 
  } catch (err) {
-   console.error(err.message)
+   console.error(err)
    res.status(500).send('Server Error RA22')
  }
 });
