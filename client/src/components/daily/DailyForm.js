@@ -1,10 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
-import CallContext from "../../context/calls/CallContext";
+import DailyWorkContext from "../../context/dailyWork/DailyWorkContext";
 
-const CallForm = () => {
-  const callContext = useContext(CallContext);
+const DailyForm = () => {
+  const dailyWorkContext = useContext(DailyWorkContext);
 
-  const { addCall, current, updateCall, clearCurrent } = callContext;
+  const { addCall, current, updateCall, clearCurrent } = dailyWorkContext;
 
   useEffect(() => {
     if (current !== null) {
@@ -29,7 +29,7 @@ const CallForm = () => {
         amount_collected: ""
       });
     }
-  }, [callContext, current]);
+  }, [dailyWorkContext, current]);
 
   const [call, setCall] = useState({
     req_by: "",
@@ -108,12 +108,10 @@ const CallForm = () => {
       />
       <input
         type="text"
-        placeholder="Phone xxx-xxx-xxxx"
+        placeholder="Customer Phone"
         name="member_phone"
-        pattern="^\d{3}-\d{3}-\d{4}$" 
         value={member_phone}
         onChange={onChange}
-        required
       />
       <input
         type="text"
@@ -234,4 +232,4 @@ const CallForm = () => {
   );
 };
 
-export default CallForm;
+export default DailyForm

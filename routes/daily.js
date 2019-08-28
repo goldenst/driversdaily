@@ -7,13 +7,13 @@ const User = require("../models/User");
 const Call = require("../models/Call");
 
 // @route   GET  api/daily
-// @Desc    Get all users calls
+// @Desc    Get all  calls
 // @Access  Private
 // Status
-router.get("/",  async (req, res) => {
+router.get("/", auth, async (req, res) => {
   try {
     console.log('in cal for calls')
-    const calls = await Call.find().sort({ date: -1});
+    const calls = await Call.find();
     res.json(calls);
   } catch (err) {
     console.error(err.message);
