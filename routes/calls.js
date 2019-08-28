@@ -94,7 +94,7 @@ router.post(
       const authToken = "f97f8b2e75eaec8fdfafb26a0d61e841";
 
       const client = require("twilio")(accountSid, authToken);
-      if (req_by === 'aaa' || req_by === 'AAA') {
+      if (req_by === 'aaa' || req_by === 'AAA' || req_by === 'Aaa') {
         client.messages.create(
           {
             to: `+1${smsNum}`,
