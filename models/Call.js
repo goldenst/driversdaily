@@ -5,6 +5,9 @@ const CallSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "user"
   },
+  date1: {
+    type: Date
+  },
   req_by: {
     type: String
   },

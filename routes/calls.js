@@ -5,11 +5,13 @@ const { check, validationResult } = require("express-validator");
 //const sms.js = require ('../sms/sms')
 const moment = require ('moment')
 
-const today = moment()
+const date1 = moment().format('MM DD YY')
+console.log(date1)
 
 
 const User = require("../models/User");
 const Call = require("../models/Call");
+
 
 // @route   GET  api/calls
 // @Desc    Get all users calls
@@ -17,7 +19,7 @@ const Call = require("../models/Call");
 // Status
 router.get("/", auth, async (req, res) => {
   try {
-    const calls = await Call.find({ user: req.user.id}).sort({ date: -1 });
+    const calls = await Call.find({ user: req.user.id, date1: date1}).sort({ date: -1 });
     res.json(calls);
   } catch (err) {
     console.error(err.message);
@@ -66,6 +68,7 @@ router.post(
     try {
       const newCall = new Call({
         user: req.user.id,
+        date1,
         req_by,
         member_name,
         aaa_membership,
